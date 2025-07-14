@@ -50,6 +50,10 @@ module RubyLLM
         max_output_tokens
       end
 
+      def thinking?
+        id.include?('3-7-sonnet') || id.include?('sonnet-4') || id.include?('opus-4')
+      end
+
       def supports_vision?
         modalities.input.include?('image')
       end

@@ -24,7 +24,7 @@ module RubyLLM
       with_model(model_id, provider: provider, assume_exists: assume_model_exists)
       @thinking = @config.default_thinking
       @thinking_budget = @config.default_thinking_budget
-      @temperature = @config.default_temperature
+      @temperature = 0.7
       @messages = []
       @tools = {}
       @on = {
@@ -79,11 +79,11 @@ module RubyLLM
       raise UnsupportedThinkingError, "Model #{@model.id} doesn't support thinking" if thinking && !@model.thinking?
 
       @thinking = thinking
-      
+
       if budget
         @thinking_budget = budget
       end
-      
+
       self
     end
 
